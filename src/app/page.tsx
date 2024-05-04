@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1>
-      Matheus é o mais lindo de todos!!!
+        A Juhh é a mais linda de todas!! ;)
       </h1>
     </main>
   );

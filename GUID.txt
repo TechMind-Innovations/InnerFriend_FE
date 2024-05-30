@@ -1,0 +1,6 @@
+rodar: yarn dev
+
+Instalar icons:
+yarn add react-icons
+
+acessar para pegar os icons: https://react-icons.github.io/react-icons/icons/fi/

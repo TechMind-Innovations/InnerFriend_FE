@@ -33,3 +33,15 @@ export function setupAPIClient(ctx = undefined){
     return api;
 
 }
+
+
+export const getCountries = async () => {
+  try {
+    const response = await axios.get('https://restcountries.com/v3.1/all');
+    const countries = response.data.map((country: any) => country.translations.por.common);
+    return countries.sort();
+  } catch (error) {
+    console.error("Error fetching countries:", error);
+    return [];
+  }
+};

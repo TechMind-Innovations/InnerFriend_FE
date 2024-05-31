@@ -8,6 +8,7 @@ import {Input} from '../../components/ui/Input'
 import {Button} from '../../components/ui/Button'
 import {Select} from '../../components/ui/Select';
 import {AuthContext} from '../../contexts/AuthContext'
+import {canSSRGuest} from '../../utils/canSSRGuest'
 
 import { getCountries } from '../../services/api';
 import {toast} from 'react-toastify'
@@ -172,3 +173,8 @@ export default function Signup() {
     </>
   )
 }
+export const getServerSideProps = canSSRGuest(async () =>{
+  return {
+    props:{}
+  }
+})

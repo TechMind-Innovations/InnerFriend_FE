@@ -18,8 +18,8 @@ export function Header(){
         </Link>
 
         <nav className={styles.menuNav}>
-          <Link href="/chatbot">
-            ChatBot
+          <Link href="/ia_friend">
+            IA_Friend
           </Link>
 
           <Link href="/about">

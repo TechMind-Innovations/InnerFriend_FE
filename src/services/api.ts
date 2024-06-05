@@ -6,9 +6,9 @@ import { signOut} from '../contexts/AuthContext'
 
 export function setupAPIClient(ctx = undefined){
     let cookies = parseCookies(ctx);
-
+    const apiUrl = process.env.API_URL;
     const api = axios.create({
-        baseURL: 'http://127.0.0.1:5000',
+        baseURL: `${apiUrl}`,
         headers: {
             Authorization: `Bearer ${cookies['@nextauth.token']}`            
         }

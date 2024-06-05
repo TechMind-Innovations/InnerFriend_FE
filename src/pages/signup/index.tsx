@@ -83,7 +83,11 @@ export default function Signup() {
         <title>InnerFriend - Cadastre-se</title>
     </Head>
     <div className={styles.containerCenter}>
-      <Image src={logoImg} alt="Logo Inner Friend"/>
+      <Image 
+        src={logoImg} 
+        alt="Logo Inner Friend"
+        width={200}
+      />
 
       <div className={styles.login}>
           <h1>Criando sua conta</h1>

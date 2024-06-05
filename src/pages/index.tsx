@@ -46,7 +46,11 @@ export default function Home() {
         <title>InnerFriend - Login</title>
     </Head>
     <div className={styles.containerCenter}>
-      <Image src={logoImg} alt="Logo Inner Friend"/>
+      <Image 
+        src={logoImg} 
+        alt="Logo Inner Friend"
+        width={400}
+        />
 
       <div className={styles.login}>
         <form onSubmit={handleLogin}>

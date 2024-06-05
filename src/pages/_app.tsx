@@ -4,13 +4,16 @@ import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from 'react-toastify'
 
 import {AuthProvider} from '../contexts/AuthContext'
+import { IA_FriendProvider } from '../contexts/IA_FriendContext'
 
 
 function MyApp({ Component, pageProps }:AppProps) {
   return (
     <AuthProvider>
-      <Component {...pageProps} /> 
-      <ToastContainer autoClose={3000}/>   
+      <IA_FriendProvider>
+        <Component {...pageProps} /> 
+        <ToastContainer autoClose={3000}/>   
+      </IA_FriendProvider>
     </AuthProvider>
   ) 
 }

@@ -1,23 +1,24 @@
-import {createContext, ReactNode, useState, useEffect} from 'react'
-import {api} from '../services/apiClient'
+import { createContext, ReactNode, useState, useEffect } from 'react'
+import { api } from '../services/apiClient'
 
-import {destroyCookie, setCookie, parseCookies} from 'nookies'
+import { destroyCookie, setCookie, parseCookies } from 'nookies'
 import Router from 'next/router'
 
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 
 type AuthContextData = {
     user: UserProps | undefined;
     isAuthenticated: boolean;
     signIn: (credentials: SignInProps) => Promise<void>;
     signOut: () => void;
-    signUp: (credentials: SignUpProps) => Promise<void>
+    signUp: (credentials: SignUpProps) => Promise<void>;
 }
 
 type UserProps = {
     id: string;
     name: string;
     email: string;
+    photo?: string;
 }
 
 type SignInProps = {
@@ -41,56 +42,58 @@ type AuthProviderProps = {
 
 export const AuthContext = createContext({} as AuthContextData)
 
-export function signOut(){
-    try{
+export function signOut() {
+    try {
         destroyCookie(undefined, '@nextauth.token')
         Router.push('/')
-    }catch{
+    } catch {
         console.log('Erro ao deslogar')
     }
 }
 
-export function AuthProvider({children} : AuthProviderProps){
+export function AuthProvider({ children }: AuthProviderProps) {
     const [user, setUser] = useState<UserProps>()
     const isAuthenticated = !!user; //!! quer dizer que vai converter para bool
 
-    useEffect(() =>{
-        const {'@nextauth.token':token} = parseCookies();
+    useEffect(() => {
+        const { '@nextauth.token': token } = parseCookies();
 
-        if(token){
+        if (token) {
             api.get('/user/me').then(response => {
-                const {id, name, email} = response.data;
+                const { id, name, email, photo } = response.data;
 
                 setUser({
                     id,
                     name,
-                    email
+                    email,
+                    photo: photo ? `data:image/jpeg;base64,${photo}` : '/photoDefault.png'
                 })
             })
-            .catch(() =>{
-                signOut();
-            })
+                .catch(() => {
+                    console.error('Dados de usuário incompletos:');
+                    signOut();
+                })
         }
-    },[])
+    }, [])
 
-    async function signIn({email, password}:SignInProps){
-        try{
-            const response = await api.post('/user/session',{
+    async function signIn({ email, password }: SignInProps) {
+        try {
+            const response = await api.post('/user/session', {
                 email,
                 password
             })
-            //console.log(response.data);
 
-            const {id, name, token} = response.data
+            const { id, name, photo, token } = response.data
 
             setCookie(undefined, '@nextauth.token', token, {
-                maxAge: 60*60*24*30, //expirar em 1 mês
+                maxAge: 60 * 60 * 24 * 30, //expirar em 1 mês
                 path: '/'//quais caminhos tem acesso, no caso todos
             })
             setUser({
                 id,
                 name,
-                email
+                email,
+                photo: photo ? `data:image/jpeg;base64,${photo}` : '/photoDefault.png'
             })
 
             //passar para proximas o token
@@ -101,40 +104,39 @@ export function AuthProvider({children} : AuthProviderProps){
             //redirecionar a dashboard
             Router.push('/home')
         }
-        catch(err){
-            console.log('Erro ao acessar ',err)
+        catch (err) {
+            console.log('Erro ao acessar ', err)
             toast.error("Erro ao acessar!")
         }
     }
 
-    async function signUp({name, social_name, year, email, sex, country, password}:SignUpProps){
+    async function signUp({ name, social_name, year, email, sex, country, password }: SignUpProps) {
         const region = country;
-        try{
-            const response = await api.post('/user/create',{
+        try {
+            const response = await api.post('/user/create', {
                 name,
-                social_name, 
+                social_name,
                 year,
-                email, 
-                sex, 
-                region, 
+                email,
+                sex,
+                region,
                 password
             })
             toast.success('Conta criada com sucesso!')
 
-            signIn({email,password});
+            signIn({ email, password });
 
             Router.push('/home')
         }
-        catch(err){
+        catch (err) {
             console.log('Erro ao cadastrar: ', err)
             toast.error("Erro ao cadastrar!")
         }
     }
 
-    return(
-        <AuthContext.Provider value={{ user, isAuthenticated, signIn, signOut, signUp}}>
+    return (
+        <AuthContext.Provider value={{ user, isAuthenticated, signIn, signOut, signUp }}>
             {children}
         </AuthContext.Provider>
     )
 }
-

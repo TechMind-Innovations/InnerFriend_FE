@@ -1,8 +1,8 @@
-.headerContainer{
+.headerContainer {
   height: 5rem;
 }
 
-.headerContent{
+.headerContent {
   max-width: 100%;
   height: 5rem;
   margin: 0 auto;
@@ -12,16 +12,16 @@
   justify-content: space-between;
   align-items: center;
 
-  img{
+  img {
     cursor: pointer;
   }
 }
 
-.menuNav{
+.menuNav {
   display: flex;
   align-items: center;
 
-  a{
+  a {
     color: var(--white);
     padding: 0 0.5rem;
     display: inline-block;
@@ -32,23 +32,64 @@
       margin-left: 2rem;
     }
 
-    &:hover{
+    &:hover {
       color: var(--red-900);
     }
-
   }
 
-
-  button{
+  button {
     margin-left: 2rem;
     background: transparent;
-    border:0;
+    border: 0;
     transition: transform 0.8s;
 
-    &:hover{
+    &:hover {
       transform: scale(1.2);
     }
   }
 
+  .profileContainer {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    margin-left: 2%;
+    color: var(--white);
 
+    .profilePhoto {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+
+    .dropdownMenu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+      padding: 0.5rem;
+      z-index: 1000;
+
+      a, button {
+        display: block;
+        padding: 0.5rem 1rem;
+        color: var(--black);
+        text-decoration: none;
+        transition: background 0.3s;
+
+        &:hover {
+          background: var(--gray-100);
+        }
+      }
+
+      button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
 }

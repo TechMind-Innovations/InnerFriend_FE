@@ -9,9 +9,6 @@ export function Header() {
   const { user, signOut } = useContext(AuthContext);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-
-  console.log(user?.name)
-  console.log(user?.photo)
   const handleMouseEnter = () => {
     setDropdownOpen(true);
   };

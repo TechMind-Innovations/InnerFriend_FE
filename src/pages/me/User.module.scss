@@ -9,8 +9,9 @@
 
 .signupContainer {
   display: flex;
-  width: 80%;
+  width: 50%;
   margin-top: 2rem;
+  justify-content: center;
 }
 
 .formColumn {
@@ -38,6 +39,19 @@
     height: 40px;
     font-size: 1.2rem;
   }
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+
+  label {
+    margin-bottom: 5px;
+    color: var(--white);
+    font-size: 14px;
+  }
+
 }
 
 .text {
@@ -81,4 +95,19 @@
     width: 100%;
     margin-right: 0;
   }
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--gray-900); 
+}
+
+.center{
+  text-align: center;
 }

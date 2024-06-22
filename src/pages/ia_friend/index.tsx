@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import logoImg from '../../../public/logo.png'
 import styles from './iaFriend.module.scss'
-
+import { Header } from '../../components/Header'
 import { Input } from '../../components/ui/Input'
 import { Button } from '../../components/ui/Button'
 import { Select } from '../../components/ui/Select';
@@ -65,46 +65,56 @@ export default function IAFriend() {
       <Head>
         <title>InnerFriend - Cadastro do Amigo</title>
       </Head>
+      <Header />
       <div className={styles.containerCenter}>
         <Image
           src={logoImg}
           alt="Logo Inner Friend"
-          width={200}
+          width={300}
         />
 
         <div className={styles.signupContainer}>
           <div className={styles.formColumn}>
-            <h1>Cadastro do Amigo</h1>
+            <h1>Informações do Amigo</h1>
             <form onSubmit={handleSignUpFriend}>
-              <Input
-                placeholder='Nome do amigo'
-                type='text'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
+              <div className={styles.inputGroup}>
+                <label>Nome:</label>
+                <Input
+                  placeholder='Nome do amigo'
+                  type='text'
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
 
-              <Select
-                value={sex_ia}
-                onChange={(e) => setSexIA(e.target.value)}
-              >
-                <option value="">Selecione o sexo do amigo</option>
-                <option value={SexEnum.male.value}>{SexEnum.male.label}</option>
-                <option value={SexEnum.female.value}>{SexEnum.female.label}</option>
-                <option value={SexEnum.other.value}>{SexEnum.other.label}</option>
-              </Select>
+              <div className={styles.inputGroup}>
+                <label>Sexo:</label>
+                <Select
+                  value={sex_ia}
+                  onChange={(e) => setSexIA(e.target.value)}
+                >
+                  <option value="">Selecione o sexo do amigo</option>
+                  <option value={SexEnum.male.value}>{SexEnum.male.label}</option>
+                  <option value={SexEnum.female.value}>{SexEnum.female.label}</option>
+                  <option value={SexEnum.other.value}>{SexEnum.other.label}</option>
+                </Select>
+              </div>
 
-              <Input
-                placeholder='Idade média do amigo'
-                type='number'
-                value={age_average}
-                onChange={(e) => setAgeAverage(e.target.value)}
-              />
+              <div className={styles.inputGroup}>
+                <label>Idade:</label>
+                <Input
+                  placeholder='Idade média do amigo'
+                  type='number'
+                  value={age_average}
+                  onChange={(e) => setAgeAverage(e.target.value)}
+                />
+              </div>
 
               <Button
                 type='submit'
                 loading={loading}
               >
-                Cadastrar
+                Salvar
               </Button>
             </form>
 
@@ -119,8 +129,8 @@ export default function IAFriend() {
   )
 }
 
-export const getServerSideProps = canSSRAuth(async () =>{
+export const getServerSideProps = canSSRAuth(async () => {
   return {
-    props:{}
+    props: {}
   }
 })

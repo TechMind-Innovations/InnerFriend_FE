@@ -9,7 +9,7 @@
 }
 
 .login{
-    margin-top: 2rem;
+    margin-top: 0rem;
     width: 600px;
     display: flex;
     align-items: center;
@@ -40,7 +40,14 @@
     color: var(--white);
     cursor: pointer;
 }
-
+.divCenter{
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: --white;
+}
 
 @media(max-width: 620px){
     .login{

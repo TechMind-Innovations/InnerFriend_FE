@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 import { getCountries } from '../../services/api';
 import Link from 'next/link';
 import Modal from 'react-modal';
+import { Header } from '../../components/Header'
 
 Modal.setAppElement('#__next');
 
@@ -96,6 +97,7 @@ export default function Me() {
       <Head>
         <title>InnerFriend - Me</title>
       </Head>
+      <Header />
       <div className={styles.containerCenter}>
         <Image
           src={currentPhoto || '/photoDefault.png'}
@@ -109,66 +111,95 @@ export default function Me() {
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
-          contentLabel="Update Profile Picture"
+          contentLabel="Atualizar a foto do Perfil"
           className={styles.modal}
           overlayClassName={styles.overlay}
         >
-          <h2>Update Profile Picture</h2>
+          <button className={styles.closeButton} onClick={closeModal}>×</button>
+          <h2>Atualizar a foto do Perfil</h2>
+          <div className={styles.center}>
+            <Image
+            src={currentPhoto || '/photoDefault.png'}
+            alt="Profile Picture"
+            width={200}
+            height={200}
+            onClick={openModal}
+            className={styles.profilePic}
+            />
+          </div>
           <input type="file" accept="image/*" onChange={handlePhotoChange} />
-          <button onClick={closeModal}>Close</button>
         </Modal>
+
 
         <div className={styles.signupContainer}>
           <div className={styles.formColumn}>
-            <h1>Cadastro do Amigo</h1>
+            <h1>Atualizar Perfil</h1>
             <form onSubmit={handleUpUser}>
-              <Input
-                placeholder='Digite seu nome'
-                type='text'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
+              <div className={styles.inputGroup}>
+                <label>Nome</label>
+                <Input
+                  placeholder='Digite seu nome'
+                  type='text'
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
 
-              <Input
-                placeholder='Digite seu social name (opicional)'
-                type='text'
-                value={social_name}
-                onChange={(e) => setSocialName(e.target.value)}
-              />
+              <div className={styles.inputGroup}>
+                <label>Nome Social (opcional)</label>
+                <Input
+                  placeholder='Digite seu social name (opcional)'
+                  type='text'
+                  value={social_name}
+                  onChange={(e) => setSocialName(e.target.value)}
+                />
+              </div>
 
-              <Input
-                placeholder='Digite sua idade'
-                type='number'
-                value={year}
-                onChange={(e) => setYear(e.target.value)}
-              />
+              <div className={styles.inputGroup}>
+                <label>Idade</label>
+                <Input
+                  placeholder='Digite sua idade'
+                  type='number'
+                  value={year}
+                  onChange={(e) => setYear(e.target.value)}
+                />
+              </div>
 
-              <Input
-                placeholder='Digite seu email'
-                type='email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
+              <div className={styles.inputGroup}>
+                <label>Email</label>
+                <Input
+                  placeholder='Digite seu email'
+                  type='email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
 
-              <Select 
-                value={sex}  
-                onChange={(e) => setSex(e.target.value)}
-              >
-                <option value="">Selecione seu sexo</option>
-                <option value={SexEnum.male.value}>{SexEnum.male.label}</option>
-                <option value={SexEnum.female.value}>{SexEnum.female.label}</option>
-                <option value={SexEnum.other.value}>{SexEnum.other.label}</option>
-              </Select>
+              <div className={styles.inputGroup}>
+                <label>Sexo</label>
+                <Select
+                  value={sex}
+                  onChange={(e) => setSex(e.target.value)}
+                >
+                  <option value="">Selecione seu sexo</option>
+                  <option value={SexEnum.male.value}>{SexEnum.male.label}</option>
+                  <option value={SexEnum.female.value}>{SexEnum.female.label}</option>
+                  <option value={SexEnum.other.value}>{SexEnum.other.label}</option>
+                </Select>
+              </div>
 
-              <Select
-                value={region}
-                onChange={(e) => setRegion(e.target.value)}
-              >
-                <option value="">Selecione seu país</option>
-                {regions.map((country, index) => (
-                  <option key={index} value={country}>{country}</option>
-                ))}
-              </Select>
+              <div className={styles.inputGroup}>
+                <label>País</label>
+                <Select
+                  value={region}
+                  onChange={(e) => setRegion(e.target.value)}
+                >
+                  <option value="">Selecione seu país</option>
+                  {regions.map((country, index) => (
+                    <option key={index} value={country}>{country}</option>
+                  ))}
+                </Select>
+              </div>
 
               <Button type='submit'>
                 Salvar

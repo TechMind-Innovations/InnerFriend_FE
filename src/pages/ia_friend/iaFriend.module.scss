@@ -1,59 +1,71 @@
 .containerCenter {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: var(--gray-900);
-  }
-  
-  .signupContainer {
-    display: flex;
-    width: 80%;
-    margin-top: 2rem;
-  }
-  
-  .formColumn {
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 2rem 1.5rem;
-    background-color: var(--gray-800);
-    border-radius: 8px;
-  
-    h1 {
-      color: var(--white);
-      padding-bottom: 1rem;
-    }
-  
-    form {
-      width: 90%;
-      display: flex;
-      flex-direction: column;
-    }
-  
-    form button {
-      height: 40px;
-      font-size: 1.2rem;
-    }
-  }
-  
-  .text {
-    margin-top: 1rem;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--gray-900);
+}
+
+.signupContainer {
+  display: flex;
+  width: 50%;
+  margin-top: 0rem;
+  justify-content: center;
+}
+
+.formColumn {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  background-color: var(--gray-800);
+  border-radius: 8px;
+
+  h1 {
     color: var(--white);
-    cursor: pointer;
+    padding-bottom: 1rem;
   }
-  
-  @media (max-width: 620px) {
-    .signupContainer {
-      flex-direction: column;
-    }
-  
-    .formColumn {
-      width: 100%;
-      margin-right: 0;
-    }
+
+  form {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
   }
-  
+
+  form button {
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+
+  label {
+    margin-bottom: 5px;
+    color: var(--white);
+    font-size: 14px;
+  }
+}
+
+.text {
+  margin-top: 1rem;
+  color: var(--white);
+  cursor: pointer;
+}
+
+@media (max-width: 620px) {
+  .signupContainer {
+    flex-direction: column;
+  }
+
+  .formColumn {
+    width: 100%;
+    margin-right: 0;
+  }
+}

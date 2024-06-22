@@ -39,12 +39,12 @@ export function Header() {
     <header className={styles.headerContainer}>
       <div className={styles.headerContent}>
         <Link href="/home">
-          <img src="/vercel.svg" width={190} height={60} />
+          <img src="/header.png" width={190} height={100} />
         </Link>
 
         <nav className={styles.menuNav}>
           <Link href="/ia_friend">
-            IA_Friend
+            Meu Amigo
           </Link>
 
           <Link href="/about">
@@ -67,11 +67,8 @@ export function Header() {
             <span>{user?.name}</span>
             {dropdownOpen && (
               <div className={styles.dropdownMenu}>
-                <Link href="/me">My Profile</Link>
-                <Link href="/settings">Settings</Link>
-                <button onClick={signOut}>
-                  Logout
-                </button>
+                <Link href="/me">Meu Perfil</Link>
+                <Link href="/settings">Config</Link>
               </div>
             )}
           </div>

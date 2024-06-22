@@ -1,59 +1,84 @@
 .containerCenter {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: var(--gray-900);
-  }
-  
-  .signupContainer {
-    display: flex;
-    width: 80%;
-    margin-top: 2rem;
-  }
-  
-  .formColumn {
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 2rem 1.5rem;
-    background-color: var(--gray-800);
-    border-radius: 8px;
-  
-    h1 {
-      color: var(--white);
-      padding-bottom: 1rem;
-    }
-  
-    form {
-      width: 90%;
-      display: flex;
-      flex-direction: column;
-    }
-  
-    form button {
-      height: 40px;
-      font-size: 1.2rem;
-    }
-  }
-  
-  .text {
-    margin-top: 1rem;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--gray-900);
+}
+
+.signupContainer {
+  display: flex;
+  width: 80%;
+  margin-top: 2rem;
+}
+
+.formColumn {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  background-color: var(--gray-800);
+  border-radius: 8px;
+
+  h1 {
     color: var(--white);
-    cursor: pointer;
+    padding-bottom: 1rem;
   }
-  
-  @media (max-width: 620px) {
-    .signupContainer {
-      flex-direction: column;
-    }
-  
-    .formColumn {
-      width: 100%;
-      margin-right: 0;
-    }
+
+  form {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
   }
-  
+
+  form button {
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+
+.text {
+  margin-top: 1rem;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.profilePic {
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 620px) {
+  .signupContainer {
+    flex-direction: column;
+  }
+
+  .formColumn {
+    width: 100%;
+    margin-right: 0;
+  }
+}

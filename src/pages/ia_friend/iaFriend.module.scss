@@ -1,3 +1,4 @@
+// styles/iaFriend.module.scss
 .containerCenter {
   min-height: 100vh;
   display: flex;
@@ -5,6 +6,11 @@
   align-items: center;
   flex-direction: column;
   background-color: var(--gray-900);
+}
+
+.photoContainer {
+  cursor: pointer;
+  margin-bottom: 2rem;
 }
 
 .signupContainer {

@@ -11,12 +11,14 @@ type IAProps = {
   name: string;
   sex_ia: string;
   age_average: number;
+  photo: string;
 }
 
 type IAData = {
   name: string;
   sex_ia: string;
   age_average: number;
+  photo: string;
 }
 
 type IA_FriendProviderProps = {
@@ -28,14 +30,15 @@ export const IA_FriendContext = createContext({} as IA_FriendContextData)
 export function IA_FriendProvider({ children }: IA_FriendProviderProps) {
   const [loading, setLoading] = useState(false);
 
-  async function upIA({ name, sex_ia, age_average }: IAProps) {
+  async function upIA({ name, sex_ia, age_average, photo }: IAProps) {
     try {
       setLoading(true);
 
       const response = await api.post('ia_friend/create', {
         name,
         sex_ia,
-        age_average
+        age_average,
+        photo
       });
 
       toast.success('Amigo cadastrado com sucesso!');

@@ -1,7 +1,6 @@
 import { FormEvent, useState, useEffect, useContext } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import logoImg from '../../../public/logo.png'
 import styles from './iaFriend.module.scss'
 import { Header } from '../../components/Header'
 import { Input } from '../../components/ui/Input'
@@ -9,10 +8,9 @@ import { Button } from '../../components/ui/Button'
 import { Select } from '../../components/ui/Select';
 import { IA_FriendContext } from '../../contexts/IA_FriendContext'
 import { canSSRAuth } from '../../utils/canSSRAuth'
-
 import { toast } from 'react-toastify'
-
 import Link from 'next/link';
+import PhotoPopup from '../../components/PhotoComponent/PhotoPopup';
 
 export default function IAFriend() {
   const { upIA, getIA } = useContext(IA_FriendContext);
@@ -20,7 +18,9 @@ export default function IAFriend() {
   const [name, setName] = useState('');
   const [sex_ia, setSexIA] = useState('');
   const [age_average, setAgeAverage] = useState('');
+  const [photo, setPhoto] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   const SexEnum = Object.freeze({
     male: { value: 'Male', label: 'Masculino' },
@@ -34,6 +34,7 @@ export default function IAFriend() {
       if (data) {
         setName(data.name);
         setSexIA(data.sex_ia);
+        setPhoto(data.photo);
         setAgeAverage(data.age_average.toString());
       }
     }
@@ -54,10 +55,16 @@ export default function IAFriend() {
     await upIA({
       name,
       sex_ia,
-      age_average: Number(age_average)
+      age_average: Number(age_average),
+      photo
     });
 
     setLoading(false);
+  }
+
+  function handleSelectPhoto(selectedPhoto: string) {
+    setPhoto(selectedPhoto);
+    setShowPopup(false);
   }
 
   return (
@@ -67,11 +74,23 @@ export default function IAFriend() {
       </Head>
       <Header />
       <div className={styles.containerCenter}>
-        <Image
-          src={logoImg}
-          alt="Logo Inner Friend"
-          width={300}
-        />
+        <div className={styles.photoContainer} onClick={() => setShowPopup(true)}>
+          {photo ? (
+            <Image
+              src={`/avatar/${photo}`}
+              alt="Foto do Amigo"
+              width={300}
+              height={300}
+            />
+          ) : (
+            <Image
+              src="/avatar/photoDefault.png"
+              alt="Foto default"
+              width={300}
+              height={300}
+            />
+          )}
+        </div>
 
         <div className={styles.signupContainer}>
           <div className={styles.formColumn}>
@@ -121,9 +140,15 @@ export default function IAFriend() {
             <Link href='/' className={styles.text}>
               Voltar para tela principal
             </Link>
-
           </div>
         </div>
+
+        {showPopup && (
+          <PhotoPopup
+            onClose={() => setShowPopup(false)}
+            onSelectPhoto={handleSelectPhoto}
+          />
+        )}
       </div>
     </>
   )

@@ -146,9 +146,9 @@ export default function Me() {
               </div>
 
               <div className={styles.inputGroup}>
-                <label>Nome Social (opcional)</label>
+                <label>Apelido (opcional)</label>
                 <Input
-                  placeholder='Digite seu social name (opcional)'
+                  placeholder='Digite seu apelido (opcional)'
                   type='text'
                   value={social_name}
                   onChange={(e) => setSocialName(e.target.value)}

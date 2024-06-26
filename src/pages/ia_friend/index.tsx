@@ -84,7 +84,7 @@ export default function IAFriend() {
             />
           ) : (
             <Image
-              src="/avatar/photoDefault.png"
+              src="/photoDefault.png"
               alt="Foto default"
               width={300}
               height={300}

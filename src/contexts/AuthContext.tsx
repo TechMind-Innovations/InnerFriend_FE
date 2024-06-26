@@ -18,7 +18,9 @@ type UserProps = {
     id: string;
     name: string;
     email: string;
+    year: number;
     photo?: string;
+    social_name?:string;
 }
 
 type SignInProps = {
@@ -60,12 +62,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
         if (token) {
             api.get('/user/me').then(response => {
-                const { id, name, email, photo } = response.data;
+                const { id, name, email, year, social_name, photo } = response.data;
 
                 setUser({
                     id,
                     name,
                     email,
+                    year,
+                    social_name,
                     photo: photo ? `data:image/jpeg;base64,${photo}` : '/photoDefault.png'
                 })
             })
@@ -83,7 +87,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 password
             })
 
-            const { id, name, photo, token } = response.data
+            const { id, name, year, photo, social_name, token } = response.data
 
             setCookie(undefined, '@nextauth.token', token, {
                 maxAge: 60 * 60 * 24 * 30, //expirar em 1 mês
@@ -93,6 +97,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 id,
                 name,
                 email,
+                year,
+                social_name,
                 photo: photo ? `data:image/jpeg;base64,${photo}` : '/photoDefault.png'
             })
 

@@ -68,7 +68,7 @@ export function Header() {
             {dropdownOpen && (
               <div className={styles.dropdownMenu}>
                 <Link href="/me">Meu Perfil</Link>
-                <Link href="/settings">Config</Link>
+                {/* <link href="/chatbot">chatbot</Link> */}
               </div>
             )}
           </div>

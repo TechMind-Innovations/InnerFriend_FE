@@ -10,7 +10,7 @@ type UserContextData = {
   removePhoto: () => void;
 };
 
-type UserProps = {
+export type UserProps = {
   id?: string;
   name: string;
   social_name?: string;

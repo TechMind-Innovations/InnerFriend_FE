@@ -8,6 +8,7 @@ import { IA_FriendContext } from '../../contexts/IA_FriendContext';
 import Router from 'next/router';
 import { toast } from 'react-toastify';
 import Image from 'next/image';
+import { userAgent } from 'next/server';
 
 export default function Home() {
   const { enviarMensagem, enviarImagem } = useChatbot();
@@ -74,7 +75,7 @@ export default function Home() {
     const userAvatar = userData?.photo ? userData.photo : (userData?.photo || '/photoDefault.png');
     const iaAvatar = iaPhoto ? `/avatar/${iaPhoto}` : '/icon.png';
     setChat([...chat, { usuario: true, texto: mensagem, avatar: userAvatar }, { usuario: false, texto: 'Digitando ...', avatar: iaAvatar }]);
-    const resposta = await enviarMensagem(mensagem, 17);
+    const resposta = await enviarMensagem(mensagem, Number(userData?.year));
     setChat(prevChat => [...prevChat.slice(0, -1), { usuario: false, texto: resposta.replace(/\n/g, '<br>'), avatar: iaAvatar }]);
   };
 
@@ -117,13 +118,12 @@ export default function Home() {
                 <p className={`${styles.chatBolha} ${msg.usuario ? styles.chatBolhaUsuario : styles.chatBolhaBot}`}>
                   <span dangerouslySetInnerHTML={{ __html: msg.texto }} />
                 </p>
-                {msg.usuario && <Image
-                                src={'/photoDefault.png'}
+                {msg.usuario && <img
+                                src={msg.avatar||'/photoDefault.png'}
                                 alt="User Photo"
                                 className={styles.chatAvatar}
                                 width={50}
                                 height={50}
-                                unoptimized
                               />
                 }                
               </div>

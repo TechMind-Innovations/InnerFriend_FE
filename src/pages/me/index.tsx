@@ -116,7 +116,7 @@ export default function Me() {
           overlayClassName={styles.overlay}
         >
           <button className={styles.closeButton} onClick={closeModal}>×</button>
-          <h2>Atualizar a foto do Perfil</h2>
+          <h2 className={styles.Att}>Atualizar a foto do Perfil</h2>
           <div className={styles.center}>
             <Image
             src={currentPhoto || '/photoDefault.png'}
@@ -127,7 +127,7 @@ export default function Me() {
             className={styles.profilePic}
             />
           </div>
-          <input type="file" accept="image/*" onChange={handlePhotoChange} />
+          <input className={styles.inputPhoto} type="file" accept="image/*" onChange={handlePhotoChange} />
         </Modal>
 
 

@@ -12,8 +12,9 @@ interface ChatbotProviderProps {
 const ChatbotContext = createContext<ChatbotContextProps | undefined>(undefined);
 
 export const ChatbotProvider: React.FC<ChatbotProviderProps> = ({ children }) => {
+  const apiUrl = process.env.API_URL;
   const enviarMensagem = async (mensagem: string, idade: number) => {
-    const resposta = await fetch("http://127.0.0.1:5000/chatGPT/chat", {
+    const resposta = await fetch(`${apiUrl}/chatGPT/chat`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +29,7 @@ export const ChatbotProvider: React.FC<ChatbotProviderProps> = ({ children }) =>
     let formData = new FormData();
     formData.append("imagem", imagem);
 
-    const response = await fetch("http://127.0.0.1:5000/upload_imagem", {
+    const response = await fetch(`${apiUrl}/chatGPT/upload_imagem`, {
       method: 'POST',
       body: formData
     });

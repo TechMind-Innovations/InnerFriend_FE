@@ -119,7 +119,7 @@ export default function IAFriend() {
                 </Select>
               </div>
 
-              <div className={styles.inputGroup}>
+              {/* <div className={styles.inputGroup}>
                 <label>Idade:</label>
                 <Input
                   placeholder='Idade média do amigo'
@@ -127,7 +127,7 @@ export default function IAFriend() {
                   value={age_average}
                   onChange={(e) => setAgeAverage(e.target.value)}
                 />
-              </div>
+              </div> */}
 
               <Button
                 type='submit'

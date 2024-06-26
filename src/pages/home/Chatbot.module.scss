@@ -1,0 +1,193 @@
+// Chatbot.module.scss
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  align-items: center; // Centralizar horizontalmente
+  justify-content: center; // Centralizar verticalmente
+}
+
+.chatContainer {
+  * {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+  }
+
+  ul {
+    list-style: none;
+    margin-block: 0;
+    padding-inline: 0;
+  }
+
+  a {
+    color: #89b0df;
+  }
+
+  a:visited {
+    color: #89b0df;
+  }
+
+  img {
+    display: block;
+  }
+
+  button {
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    background: linear-gradient(to bottom, #01080e, #144480);
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+.container {
+  padding: 0 2rem;
+}
+
+@media screen and (min-width: 1400px) {
+  .container {
+    padding: 0 calc((100vw - 1200px) / 2);
+  }
+}
+
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+  border-bottom: 1px solid #1c5296;
+}
+
+.cabecalhoAcoes {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 1400px) {
+  .cabecalhoAcoes {
+    gap: 2.8125rem;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-grow: 1;
+  width: 70%; // Reduzir o tamanho do main container
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 10rem - 5rem);
+  scrollbar-width: none;
+  overflow-y: scroll;
+  border: 1px solid #ced3e0; // Adicionando a borda ao redor do chat
+  padding: 1rem; // Adicionando padding para espaçar o conteúdo da borda
+}
+
+.chat::-webkit-scrollbar {
+  display: none;
+}
+
+.chatMessageContainer {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.chatMessageContainerUser {
+  justify-content: flex-end;
+}
+
+.chatAvatar {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.chatBolha {
+  max-width: calc(100% - 4.5rem); // Ajustar para incluir o espaço do avatar
+  width: fit-content;
+  padding: 1.5rem;
+  border-radius: 10px;
+  font-size: 1.375rem;
+  position: relative;
+}
+
+@media screen and (min-width: 1400px) {
+  .chatBolha {
+    max-width: 60%;
+  }
+}
+
+.chatBolhaBot {
+  background-color: #5385c3;
+  color: var(--white);
+}
+
+.chatBolhaUsuario {
+  border: 1px solid #5385c3;
+  align-self: flex-end;
+  margin-right: 1rem;
+  color: var(--white);
+}
+
+.entrada {
+  height: 7rem; // Ajustar a altura para 70%
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: stretch;
+  align-items: center;
+  border-top: 1px solid #1c5296;
+  width: 100%; // Garantindo que cubra toda a largura disponível
+  padding: 0 1rem; // Adicionando padding para espaçar o conteúdo
+}
+
+.entradaContainer {
+  display: flex;
+  width: 100%; // Garantindo que cubra toda a largura disponível
+}
+
+.entradaInput {
+  height: 3rem; // Ajustar a altura para 70%
+  width: 100%; // Garantindo que cubra toda a largura disponível
+  background-color: transparent;
+  font-size: 1.375rem;
+  color: #ced3e0;
+  padding-left: 20px;
+}
+
+.entradaInput::placeholder {
+  color: #ced3e0;
+}
+
+.icone {
+  display: inline-block;
+  height: 2.8rem; // Ajustar a altura para 70%
+  width: 2.8rem; // Ajustar a largura para 70%
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.iconeEnviarMensagem {
+  background-image: url('/icone-enviar.svg');
+}
+
+.iconeMaisOpcoes {
+  background-image: url('/icone-mais.svg');
+}

@@ -45,3 +45,15 @@ export const getCountries = async () => {
     return [];
   }
 };
+
+
+export const sendMessageToChatbot = async (message: string) => {
+    const api = setupAPIClient();
+    try {
+      const response = await api.post('/api/chat', { message });
+      return response.data.message;
+    } catch (error) {
+      console.error('Error sending message to chatbot:', error);
+      return 'Erro ao enviar mensagem para o chatbot.';
+    }
+  };

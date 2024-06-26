@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useState } from 'react'
 import { api } from '../services/apiClient'
 import { toast } from 'react-toastify'
+import Router from 'next/router';
 
 type IA_FriendContextData = {
   upIA: (credentials: IAProps) => Promise<void>;
@@ -43,6 +44,7 @@ export function IA_FriendProvider({ children }: IA_FriendProviderProps) {
 
       toast.success('Amigo cadastrado com sucesso!');
       console.log("Friend data:", response.data);
+      Router.push('/home');
 
       setLoading(false);
     } catch (err) {

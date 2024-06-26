@@ -10,21 +10,21 @@ export default function About() {
       name: 'Matheus Henrique Souza',
       role: 'Desenvolvedor Full Stack',
       age: '19 anos',
-      description: 'Sempre apaixonado por criar algo, e a programação deu essa oportunidade.',
+      description: 'Sempre fui apaixonado em criar algo, e a programação me deu essa oportunidade.',
       photo: '/path-to-photo1.jpg'
     },
     {
       name: 'Yuri Manoel de Assunção Neto',
-      role: 'Desenvolvedor Frontend',
+      role: 'Desenvolvedor',
       age: '21 anos',
-      description: 'A criatividade no frontend é o que me motiva todos os dias.',
+      description: '',
       photo: '/path-to-photo2.jpg'
     },
     {
       name: 'Wisley Victor Ferreira Santos',
-      role: 'Desenvolvedor Backend',
-      age: '22 anos',
-      description: 'Adoro resolver problemas complexos e otimizar sistemas.',
+      role: 'Desenvolvedor Mobile e Full Stack',
+      age: '21 anos',
+      description: 'Gosto de inovação e na programação inovação é o que mais tem, por isso escolhi ser desenvolvedor!',
       photo: '/path-to-photo3.jpg'
     }
   ];

@@ -121,3 +121,13 @@
 .inputPhoto{
   color: var(--white);
 }
+
+.actions {
+  text-align: right;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+

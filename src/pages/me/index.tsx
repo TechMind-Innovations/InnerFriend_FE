@@ -127,7 +127,17 @@ export default function Me() {
             className={styles.profilePic}
             />
           </div>
+
           <input className={styles.inputPhoto} type="file" accept="image/*" onChange={handlePhotoChange} />
+
+          <div className={styles.actions}>
+          <Button
+                type='submit'
+                onClick={closeModal}
+              >
+                Ok
+          </Button>
+        </div>
         </Modal>
 
 
@@ -144,6 +154,7 @@ export default function Me() {
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
+              
 
               <div className={styles.inputGroup}>
                 <label>Apelido (opcional)</label>

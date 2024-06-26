@@ -45,7 +45,7 @@ export default function IAFriend() {
   async function handleSignUpFriend(event: FormEvent) {
     event.preventDefault();
 
-    if (name === '' || sex_ia === '' || age_average === '') {
+    if (name === '' || sex_ia === '') {
       toast.warning('Preencha todos os campos obrigatórios!')
       return;
     }

@@ -9,6 +9,7 @@ export function Header() {
   const { user, signOut } = useContext(AuthContext);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
   const handleMouseEnter = () => {
     setDropdownOpen(true);
   };
@@ -23,6 +24,7 @@ export function Header() {
     }
   };
 
+ 
   useEffect(() => {
     if (dropdownOpen) {
       document.addEventListener('mousedown', handleClickOutside);

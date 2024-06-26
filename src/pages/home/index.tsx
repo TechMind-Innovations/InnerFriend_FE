@@ -7,8 +7,8 @@ import { UserContext, UserProps } from '../../contexts/UserContext';
 import { IA_FriendContext } from '../../contexts/IA_FriendContext';
 import Router from 'next/router';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../contexts/AuthContext';
 import Image from 'next/image';
-import { userAgent } from 'next/server';
 
 export default function Home() {
   const { enviarMensagem, enviarImagem } = useChatbot();
@@ -22,6 +22,10 @@ export default function Home() {
   const [iaPhoto, setIaPhoto] = useState('');
   const lastMessageRef = useRef<HTMLParagraphElement>(null); // Referência para a última mensagem
   let isShow = true;
+  const { user } = useContext(AuthContext);
+  const [refreshed, setRefreshed] = useState(false);
+
+
 
   useEffect(() => {
     const fetchIAData = async () => {
@@ -41,6 +45,8 @@ export default function Home() {
 
     fetchIAData();
   }, [getIA]);
+
+
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -118,13 +124,13 @@ export default function Home() {
                 <p className={`${styles.chatBolha} ${msg.usuario ? styles.chatBolhaUsuario : styles.chatBolhaBot}`}>
                   <span dangerouslySetInnerHTML={{ __html: msg.texto }} />
                 </p>
-                {msg.usuario && <img
-                                src={msg.avatar||'/photoDefault.png'}
-                                alt="User Photo"
-                                className={styles.chatAvatar}
-                                width={50}
-                                height={50}
-                              />
+                {msg.usuario && <Image
+                                  src={user?.photo || '/photoDefault.png'}
+                                  alt="User Photo"
+                                  className={styles.profilePhoto}
+                                  width={50}
+                                  height={50}
+                                />
                 }                
               </div>
               

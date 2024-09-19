@@ -100,7 +100,7 @@ export default function Signup() {
             />
 
             <Input
-              placeholder='Digite seu apelido (opicional)'
+              placeholder='Digite seu apelido (opcional)'
               type='text'
               value={social_name}
               onChange={(e) => setSocialName(e.target.value)}
